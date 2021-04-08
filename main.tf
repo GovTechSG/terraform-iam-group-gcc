@@ -131,6 +131,9 @@ resource "aws_iam_group_policy" "iam_group_force_mfa" {
       "Condition": {
         "BoolIfExists": {
           "aws:MultiFactorAuthPresent": "false"
+        },
+        "NumericLessThan": {
+          "aws:MultiFactorAuthAge": 3600
         }
       }
     }
